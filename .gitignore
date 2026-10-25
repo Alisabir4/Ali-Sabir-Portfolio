@@ -1,0 +1,20 @@
+node_modules/
+dist/
+
+# Environment variables and local secrets
+.env
+.env.*
+!.env.example
+*.local
+secrets/
+*.secret
+credentials.json
+credentials.*.json
+
+# Private keys and certificates
+*.pem
+*.key
+*.p12
+*.pfx
+
+.DS_Store
