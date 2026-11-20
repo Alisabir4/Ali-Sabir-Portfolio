@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import {
   ArrowDown, ArrowDownRight, ArrowRight, ArrowUpRight, BrainCircuit, BriefcaseBusiness,
-  Check, Code2, Cpu, Github, Layers3, Mail, Menu, Network, ScanEye, Workflow, X,
+  Check, Code2, Cpu, Github, Layers3, Mail, Menu, Network, ScanEye, Workflow, X, ExternalLink,
 } from 'lucide-react'
 
 const GITHUB_URL = 'https://github.com/Alisabir4'
@@ -27,11 +27,12 @@ const groups = [
 ]
 
 const projects = [
-  { n: '01', status: 'PROJECT', title: 'Ops Copilot', text: 'An AI-powered operations assistant combining a FastAPI backend, Streamlit interface, database-backed operational data, RAG, role-based access control, audit logs, and approval workflows.', tags: ['Python', 'FastAPI', 'Streamlit', 'RAG', 'SQL', 'JWT / RBAC'], icon: BrainCircuit },
-  { n: '02', status: 'PROJECT', title: 'DocuMind AI', text: 'A document intelligence application designed for document understanding, semantic search, and question answering over uploaded documents.', tags: ['Python', 'Streamlit', 'PyMuPDF', 'Sentence Transformers', 'FAISS'], icon: Layers3 },
-  { n: '03', status: 'PROJECT', title: 'AI Chatbot', text: 'A conversational AI application integrating a language model to answer user questions through a simple chat interface.', tags: ['Python', 'Streamlit', 'LLM APIs'], icon: BrainCircuit },
-  { n: '04', status: 'PROJECT', title: 'Computer Vision Systems', text: 'Computer-vision experiments and applications involving YOLO-based object detection, image analysis, and video processing.', tags: ['Python', 'YOLO', 'OpenCV'], icon: ScanEye },
-  { n: '05', status: 'FOCUS AREA', title: 'Custom AI Solutions', text: 'Custom AI applications and automation workflows shaped around specific requirements, including RAG systems, chatbot integrations, APIs, and intelligent workflows.', tags: ['Python', 'FastAPI', 'RAG', 'AI Agents', 'n8n'], icon: Workflow },
+  { n: '01', title: 'AI Chatbot', text: 'A conversational AI chatbot project.', details: 'Conversational AI', tags: ['Python', 'Streamlit', 'LLM APIs'], icon: BrainCircuit },
+  { n: '02', title: 'DocuMind AI – RAG Chatbot', text: 'A RAG chatbot for asking questions about documents.', details: 'Document Q&A · RAG', tags: ['Python', 'Streamlit', 'PyMuPDF', 'Sentence Transformers', 'FAISS'], icon: Layers3, demo: 'https://ai-rag-chatbot-zajiefnfvflgkxawvvd4bz.streamlit.app/' },
+  { n: '03', title: 'CareerTutor AI – Agentic AI Career Assistant', text: 'An agentic AI assistant focused on career support.', details: 'Agentic AI · Career assistant', tags: [], icon: BriefcaseBusiness },
+  { n: '04', title: 'JobPilot AI', text: 'An AI project named JobPilot.', details: 'AI project', tags: [], icon: Workflow, demo: 'https://jobpilot-ai-mtzkdyi5eceaccoc7g6o5r.streamlit.app/' },
+  { n: '05', title: 'AI Codebase Analyzer', text: 'An AI tool for analyzing codebases.', details: 'Codebase analysis', tags: [], icon: Code2, demo: 'https://alisabir4-9lydluyxapccruen6teqj3.streamlit.app/' },
+  { n: '06', title: 'VisionTrack AI', text: 'An AI project named VisionTrack.', details: 'AI project', tags: [], icon: ScanEye },
 ]
 
 const services = [
@@ -124,9 +125,8 @@ function App() {
         </section>
 
         <section className="projects section-wrap section-block" id="projects">
-          <div className="section-heading heading-row"><div><span className="section-kicker">04 — PROJECTS</span><h2>Selected <span>projects.</span></h2></div><p>Practical applications and experiments across AI, documents, and computer vision.</p></div>
-          <div className="project-grid">{projects.map(({ n, status, title, text, tags, icon: Icon }) => <article className="project-card" key={n}><div className="project-card-top"><span className="project-number">{n} / {status}</span><IconMark><Icon size={19} /></IconMark></div><h3>{title}</h3><p>{text}</p><div className="project-tags">{tags.map((tag) => <span key={tag}>{tag}</span>)}</div><span className="project-link project-link-muted">Link coming soon</span><div className="project-watermark">{n}</div></article>)}</div>
-          <div className="project-note"><span className="note-marker"><Check size={13} /></span><p>Project links will be added when public repositories or demos are available.</p></div>
+          <div className="section-heading heading-row"><div><span className="section-kicker">04 — PROJECTS</span><h2>Selected <span>projects.</span></h2></div><p>AI applications spanning chat, documents, career support, code analysis, and vision.</p></div>
+          <div className="project-grid">{projects.map(({ n, title, text, details, tags, icon: Icon, demo }) => <article className="project-card" key={n}><div className="project-card-top"><span className="project-number">{n} / PROJECT</span><IconMark className="project-thumb"><Icon size={22} /></IconMark></div><h3>{title}</h3><p>{text}</p><div className="project-details">{details}</div><div className="project-tags">{tags.length ? tags.map((tag) => <span key={tag}>{tag}</span>) : <span>Technologies not specified</span>}</div><div className="project-actions">{demo ? <a className="project-link" href={demo} target="_blank" rel="noopener noreferrer">Live Demo <ExternalLink size={13} /></a> : <span className="project-link project-link-muted">Demo unavailable</span>}</div><div className="project-watermark">{n}</div></article>)}</div>
         </section>
 
         <section className="services section-wrap section-block" id="services">
